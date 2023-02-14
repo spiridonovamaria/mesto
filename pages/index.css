@@ -1,0 +1,39 @@
+@import url(../vendor/normalize.css);
+
+@import url(../vendor/fonts/inter.css);
+
+@import url(../blocks/root/root.css);
+
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
+
+@import url(../blocks/account/account.css);
+@import url(../blocks/account/__photo/account__photo.css);
+@import url(../blocks/account/__bio/account__bio.css);
+@import url(../blocks/account/__title/account__title.css);
+@import url(../blocks/account/__name/account__name.css);
+@import url(../blocks/account/__edit-button/account__edit-button.css);
+@import url(../blocks/account/__profession/account__profession.css);
+@import url(../blocks/account/__add-button/account__add-button.css);
+
+@import url(../blocks/posts/posts.css);
+
+@import url(../blocks/post/post.css);
+@import url(../blocks/post/__photo/post__photo.css);
+@import url(../blocks/post/__info/post__info.css);
+@import url(../blocks/post/__name/post__name.css);
+@import url(../blocks/post/__like-button/post__like-button.css);
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__info/footer__info.css);
+
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__header/popup__header.css);
+@import url(../blocks/popup/__fieldset/popup__fieldset.css);
+@import url(../blocks/popup/__fieldset/_name/popup__fieldset_name.css);
+@import url(../blocks/popup/__fieldset/_job/popup__fieldset_job.css);
+@import url(../blocks/popup/__save/popup__save.css);
+@import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/_active/popup_active.css);

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Mesto</title>
+</head>
+
+<body class="root">
+    <header class="header">
+        <img class="header__logo" src="./images/Vector.svg" alt="Логотип">
+    </header>
+    <main class="content">
+        <section class="account">
+            <img class="account__photo" src="./images/image.jpg" alt="Аватар">
+            <div class="account__bio">
+                <div class="account__title">
+                    <h2 class="account__name" id="user-name">
+                        </h1>
+                        <button class="account__edit-button" type="button"></button>
+                </div>
+                <h3 class="account__profession" id="user-occupation"></h3>
+            </div>
+            <button class="account__add-button" type="button"></button>
+        </section>
+        <section class="elements">
+            <ul class="posts">
+                <li class="post">
+                    <img class="post__photo" src="./images/kirill-pershin-1088404-unsplash-min.jpg" alt="Карачаевск">
+                    <div class="post__info">
+                        <h3 class="post__name">Карачаевск</h3>
+                        <button class="post__like-button" type="button"></button>
+                    </div>
+                </li>
+                <li class="post">
+                    <img class="post__photo" src="./images/kirill-pershin-1404681-unsplash-min.jpg" alt="Гора Эльбрус">
+                    <div class="post__info">
+                        <h3 class="post__name">Гора Эльбрус</h3>
+                        <button class="post__like-button" type="button"></button>
+                    </div>
+                </li>
+                <li class="post">
+                    <img class="post__photo" src="./images/kirill-pershin-1556355-unsplash-min.jpg" alt="Домбай">
+                    <div class="post__info">
+                        <h3 class="post__name">Домбай</h3>
+                        <button class="post__like-button" type="button"></button>
+                    </div>
+                </li>
+                <li class="post">
+                    <img class="post__photo" src="./images/kirill-pershin-1404681-unsplash-min.jpg" alt="Гора Эльбрус">
+                    <div class="post__info">
+                        <h3 class="post__name">Гора Эльбрус</h3>
+                        <button class="post__like-button" type="button"></button>
+                    </div>
+                </li>
+                <li class="post">
+                    <img class="post__photo" src="./images/kirill-pershin-1556355-unsplash-min.jpg" alt="Домбай">
+                    <div class="post__info">
+                        <h3 class="post__name">Домбай</h3>
+                        <button class="post__like-button" type="button"></button>
+                    </div>
+                </li>
+                <li class="post">
+                    <img class="post__photo" src="./images/kirill-pershin-1088404-unsplash-min.jpg" alt="Карачаевск">
+                    <div class="post__info">
+                        <h3 class="post__name">Карачаевск</h3>
+                        <button class="post__like-button" type="button"></button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__info">&copy;2023 Mesto Russia</p>
+    </footer>
+    <section class="popup">
+
+        <div class="popup__container">
+            <button class="popup__close" type="button"></button>
+
+            <form class="popup__form">
+                <h2 class="popup__header">Редактировать профиль</h2>
+                <fieldset class="popup__fieldset">
+                    <input class="popup__fieldset_name" type="text" placeholder="Ваше имя" id="user-name-input">
+                    <input class="popup__fieldset_job" type="text" placeholder="Род деятельности"
+                        id="user-occupation-input">
+                </fieldset>
+                <button class="popup__save" type="submit">Сохранить</button>
+            </form>
+
+
+        </div>
+    </section>
+    <script src="./scripts/index.js"></script>
+</body>
+
+</html>
