@@ -19,4 +19,4 @@
 Базовая работа с JavaScript:  
 Получение и вывод данных из DOM-дерева
 
-[Ссылка на проект](https://spiridonovamaria.github.io/mesto/)
+[Ссылка на проект]( https://spiridonovamaria.github.io/mesto/)
