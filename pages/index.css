@@ -32,8 +32,8 @@
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__header/popup__header.css);
 @import url(../blocks/popup/__fieldset/popup__fieldset.css);
-@import url(../blocks/popup/__fieldset/_name/popup__fieldset_name.css);
-@import url(../blocks/popup/__fieldset/_job/popup__fieldset_job.css);
+@import url(../blocks/popup/__fieldset-name/popup__fieldset_name.css);
+@import url(../blocks/popup/__fieldset-job/popup__fieldset_job.css);
 @import url(../blocks/popup/__save/popup__save.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/_active/popup_active.css);
