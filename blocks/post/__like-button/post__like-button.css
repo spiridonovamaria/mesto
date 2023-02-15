@@ -1,13 +1,12 @@
 .post__like-button {
-    height: 19px;
+	height: 19px;
 	width: 22px;
 	background-image: url(../../../images/like.svg);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-color: #FFFFFF;
-    border: none;
+	border: none;
 	cursor: pointer;
-
 }
 
 .post__like-button:hover {

@@ -15,6 +15,7 @@
     background-size: 22px 22px;
     background-position: center;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .account__add-button:hover {
