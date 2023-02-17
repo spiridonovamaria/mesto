@@ -7,6 +7,8 @@
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 
+@import url(../blocks/content/content.css);
+
 @import url(../blocks/account/account.css);
 @import url(../blocks/account/__photo/account__photo.css);
 @import url(../blocks/account/__bio/account__bio.css);

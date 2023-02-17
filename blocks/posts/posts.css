@@ -20,7 +20,6 @@
   .posts {
     margin: 0 auto;
     max-width: 282px;
-    padding-top: 36px;
     grid-template-columns: repeat(1, 1fr);
     gap: 20px 0;
   }
