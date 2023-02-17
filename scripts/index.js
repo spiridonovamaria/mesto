@@ -1,12 +1,12 @@
 let accountEdit = document.querySelector('.account__edit-button');
 let popup = document.querySelector('.popup');
-let ButtonClose = popup.querySelector('.popup__close');
+let buttonClose = popup.querySelector('.popup__close');
 let formEdit = popup.querySelector('.popup__form');
 
-const userNameElement = document.querySelector('#user-name');
-const userOccupationElement = document.querySelector('#user-occupation');
-const userNameInput = document.querySelector('#user-name-input');
-const userOccupationInput = document.querySelector('#user-occupation-input');
+const userNameElement = document.querySelector('.account__name');
+const userOccupationElement = document.querySelector('.account__profession');
+const userNameInput = document.querySelector('.popup__input_type_name');
+const userOccupationInput = document.querySelector('.popup__input_type_job');
 
 const handleAccountEditClick = () => {
 
@@ -27,6 +27,6 @@ const handleFormEdit = (evt) => {
 }
 
 accountEdit.addEventListener('click', handleAccountEditClick);
-ButtonClose.addEventListener('click', handleButtonCloseClick);
+buttonClose.addEventListener('click', handleButtonCloseClick);
 formEdit.addEventListener('submit', handleFormEdit);
 
