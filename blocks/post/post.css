@@ -1,6 +1,6 @@
 .post {
-    max-width: 282px;
-    max-height: 362px;
-    background-color: #ffffff;
-    border-radius: 10px;
+  max-width: 282px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow-x: hidden;
 }

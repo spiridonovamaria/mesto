@@ -1,3 +1,5 @@
 .elements {
-    
+  overflow-x: hidden;
+  max-width: 880px;
+  min-width: 282px;
 }
