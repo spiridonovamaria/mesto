@@ -13,10 +13,8 @@
 
 @media screen and (max-width: 950px) and (min-width: 650px) {
   .posts {
-    display: grid;
     grid-template-columns: repeat(2, 282px);
     grid-template-rows: repeat(3, 361px);
-    align-items: center;
     justify-content: center;
   }
 }
