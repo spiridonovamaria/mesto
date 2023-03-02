@@ -26,7 +26,7 @@
     </section>
     <section class="elements">
       <ul class="posts">
-        <li class="post">
+        <!--<li class="post">
           <img class="post__photo" src="./images/kirill-pershin-1088404-unsplash-min.jpg" alt="Карачаевск">
           <div class="post__info">
             <h3 class="post__name">Карачаевск</h3>
@@ -67,28 +67,57 @@
             <h3 class="post__name">Карачаевск</h3>
             <button class="post__like-button" type="button"></button>
           </div>
-        </li>
+        </li>-->
       </ul>
     </section>
   </main>
   <footer class="footer">
     <p class="footer__info">&copy;2023 Mesto Russia</p>
   </footer>
-  <div class="popup">
-
+  <div class="popup popup__edit">
     <div class="popup__container">
-      <button class="popup__close" type="button"></button>
-
-      <form class="popup__form" name="formEdit">
+      <button class="popup__close popup__close-button-edit" type="button"></button>
+      <form class="popup__form popup__form-edit" name="formEdit">
         <h2 class="popup__header">Редактировать профиль</h2>
-        <fieldset class="popup__fieldset">
+        <fieldset class="popup__fieldset popup__fieldset-edit">
           <input class="popup__input popup__input_type_name" type="text" placeholder="Ваше имя" name="name">
           <input class="popup__input popup__input_type_job" type="text" placeholder="Род деятельности" name="job">
         </fieldset>
         <button class="popup__save" type="submit">Сохранить</button>
       </form>
+    </div>
+  </div>
 
+  <template id="cardTemplate">
+    <li class="post">
+      <img class="post__photo">
+      <div class="post__info">
+        <h3 class="post__name"></h3>
+        <button class="post__like-button" type="button"></button>
+        <button class="post__delete-button" type="button"></button>
+      </div>
+    </li>
+  </template>
 
+  <div class="popup popup__add">
+    <div class="popup__container">
+      <button class="popup__close popup__close-button-add" type="button"></button>
+      <form class="popup__form popup__form-add" name="formEdit">
+        <h2 class="popup__header">Новое место </h2>
+        <fieldset class="popup__fieldset popup__fieldset-add">
+          <input class="popup__input popup__input_type_title" type="text" placeholder="Название" name="title">
+          <input class="popup__input popup__input_type_link" type="text" placeholder="Ссылка на картинку" name="link">
+        </fieldset>
+        <button class="popup__save" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup__photo">
+    <div class="popup__container popup__container-photo">
+        <img class="popup__open-photo" src="#" alt="#">
+        <p class="popup__header-photo"></p>
+        <button type="button" class="popup__close popup__close-button-photo"></button>
     </div>
   </div>
   <script src="./scripts/index.js"></script>
