@@ -26,48 +26,7 @@
     </section>
     <section class="elements">
       <ul class="posts">
-        <!--<li class="post">
-          <img class="post__photo" src="./images/kirill-pershin-1088404-unsplash-min.jpg" alt="Карачаевск">
-          <div class="post__info">
-            <h3 class="post__name">Карачаевск</h3>
-            <button class="post__like-button" type="button"></button>
-          </div>
-        </li>
-        <li class="post">
-          <img class="post__photo" src="./images/kirill-pershin-1404681-unsplash-min.jpg" alt="Гора Эльбрус">
-          <div class="post__info">
-            <h3 class="post__name">Гора Эльбрус</h3>
-            <button class="post__like-button" type="button"></button>
-          </div>
-        </li>
-        <li class="post">
-          <img class="post__photo" src="./images/kirill-pershin-1556355-unsplash-min.jpg" alt="Домбай">
-          <div class="post__info">
-            <h3 class="post__name">Домбай</h3>
-            <button class="post__like-button" type="button"></button>
-          </div>
-        </li>
-        <li class="post">
-          <img class="post__photo" src="./images/kirill-pershin-1404681-unsplash-min.jpg" alt="Гора Эльбрус">
-          <div class="post__info">
-            <h3 class="post__name">Гора Эльбрус</h3>
-            <button class="post__like-button" type="button"></button>
-          </div>
-        </li>
-        <li class="post">
-          <img class="post__photo" src="./images/kirill-pershin-1556355-unsplash-min.jpg" alt="Домбай">
-          <div class="post__info">
-            <h3 class="post__name">Домбай</h3>
-            <button class="post__like-button" type="button"></button>
-          </div>
-        </li>
-        <li class="post">
-          <img class="post__photo" src="./images/kirill-pershin-1088404-unsplash-min.jpg" alt="Карачаевск">
-          <div class="post__info">
-            <h3 class="post__name">Карачаевск</h3>
-            <button class="post__like-button" type="button"></button>
-          </div>
-        </li>-->
+
       </ul>
     </section>
   </main>
@@ -88,16 +47,7 @@
     </div>
   </div>
 
-  <template id="cardTemplate">
-    <li class="post">
-      <img class="post__photo">
-      <div class="post__info">
-        <h3 class="post__name"></h3>
-        <button class="post__like-button" type="button"></button>
-        <button class="post__delete-button" type="button"></button>
-      </div>
-    </li>
-  </template>
+
 
   <div class="popup popup__add">
     <div class="popup__container">
@@ -113,13 +63,25 @@
     </div>
   </div>
 
-  <div class="popup popup__photo">
-    <div class="popup__container popup__container-photo">
-        <img class="popup__open-photo" src="#" alt="#">
-        <p class="popup__header-photo"></p>
-        <button type="button" class="popup__close popup__close-button-photo"></button>
+  <div class="popup popup__image">
+    <div class="popup__container popup__container-image">
+      <button type="button" class="popup__close popup__close-image"></button>
+      <img class="popup__open-image" src="#" alt="#">
+      <p class="popup__header-image"></p>
     </div>
   </div>
+
+  <template id="cardTemplate">
+    <li class="post">
+      <img class="post__photo">
+      <div class="post__info">
+        <h3 class="post__name"></h3>
+        <button class="post__like-button" type="button"></button>
+        <button class="post__delete-button" type="button"></button>
+      </div>
+    </li>
+  </template>
+
   <script src="./scripts/index.js"></script>
 </body>
 

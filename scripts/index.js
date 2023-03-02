@@ -15,19 +15,29 @@ const userOccupationInput = document.querySelector('.popup__input_type_job');
 const nameCardsInput = document.querySelector('.popup__input_type_title');
 const linkCardsInput = document.querySelector('.popup__input_type_link');
 
-const popupPhoto = document.querySelector('.popup__photo');
-const FullPhoto = document.querySelector('.popup__open-photo');
-const nameFullPhoto = document.querySelector('.popup__header-photo');
+let popupPhoto = document.querySelector('.popup__image');
+const FullPhoto = document.querySelector('.popup__open-image');
+const nameFullPhoto = document.querySelector('.popup__header-image');
 const popup = document.querySelector('.popup');
+let buttonClosePhoto = document.querySelector('.popup__close-image');
+
+/*Функция закрытия попапа*/
+function closePopup(close) {
+  close.classList.remove('popup_opened');
+}
 
 
+/*Функиция открытия попапа */
 
+function openPopup(open) {
+  open.classList.add('popup_opened');
+}
 
 const handleAccountEditClick = () => {
 
   userNameInput.value = userNameElement.textContent;
   userOccupationInput.value = userOccupationElement.textContent
-  popupEdit.classList.add('popup_opened');
+  openPopup(popupEdit);
 }
 
 
@@ -97,7 +107,7 @@ const createCard = (card) => {
   postPhoto.addEventListener('click', function() {
   FullPhoto.src = card.link;
   nameFullPhoto.textContent = card.name;
-  handlePopupPhotoClick();
+  openPopup(popupPhoto);
 });
 
 
@@ -118,11 +128,6 @@ initialCards.forEach((card) => {
 initialCards.forEach(createCard);
 
 
-const handleAccountAddClick = () => {
-  popupAdd.classList.add('popup_opened');
-}
-
-
 
 const handleFormAdd = (element) => {
   element.preventDefault();
@@ -135,23 +140,15 @@ const handleFormAdd = (element) => {
 };
 
 
-const buttonClosePhoto = document.querySelector('.popup__close-button-photo');
 
-const handlePopupPhotoClick = () => {
-  popupPhoto.classList.add('popup_opened');
-}
 
-function closePopup(close) {
-  close.classList.remove('popup_opened');
-}
 
 buttonClosePhoto.addEventListener('click' , () =>  {
   closePopup(popupPhoto);
 });
-popupPhoto.addEventListener('click' , handlePopupPhotoClick);
-
-
-accountAdd.addEventListener('click', handleAccountAddClick);
+accountAdd.addEventListener('click', () =>  {
+  openPopup(popupAdd);
+});
 buttonCloseAdd.addEventListener('click', () =>  {
   closePopup(popupAdd);
 });
