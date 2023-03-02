@@ -50,7 +50,7 @@ const handleFormEdit = (evt) => {
 }
 
 accountEdit.addEventListener('click', handleAccountEditClick);
-buttonCloseEdit.addEventListener('click',() =>  {
+buttonCloseEdit.addEventListener('click', () => {
   closePopup(popupEdit);
 });
 formEdit.addEventListener('submit', handleFormEdit);
@@ -104,11 +104,11 @@ const createCard = (card) => {
   });
 
 
-  postPhoto.addEventListener('click', function() {
-  FullPhoto.src = card.link;
-  nameFullPhoto.textContent = card.name;
-  openPopup(popupPhoto);
-});
+  postPhoto.addEventListener('click', function () {
+    FullPhoto.src = card.link;
+    nameFullPhoto.textContent = card.name;
+    openPopup(popupPhoto);
+  });
 
 
 
@@ -143,13 +143,13 @@ const handleFormAdd = (element) => {
 
 
 
-buttonClosePhoto.addEventListener('click' , () =>  {
+buttonClosePhoto.addEventListener('click', () => {
   closePopup(popupPhoto);
 });
-accountAdd.addEventListener('click', () =>  {
+accountAdd.addEventListener('click', () => {
   openPopup(popupAdd);
 });
-buttonCloseAdd.addEventListener('click', () =>  {
+buttonCloseAdd.addEventListener('click', () => {
   closePopup(popupAdd);
 });
 formAdd.addEventListener('submit', handleFormAdd);
