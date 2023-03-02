@@ -1,8 +1,8 @@
 let accountEdit = document.querySelector('.account__edit-button');
-let popupEdit = document.querySelector('.popup__edit');
+let popupEdit = document.querySelector('.popup_edit');
 let buttonCloseEdit = document.querySelector('.popup__close');
 let formEdit = document.querySelector('.popup__form');
-let popupAdd = document.querySelector('.popup__add');
+let popupAdd = document.querySelector('.popup_add');
 let buttonCloseAdd = document.querySelector('.popup__close-button-add');
 let accountAdd = document.querySelector('.account__add-button');
 let formAdd = document.querySelector('.popup__form-add');
@@ -15,7 +15,7 @@ const userOccupationInput = document.querySelector('.popup__input_type_job');
 const nameCardsInput = document.querySelector('.popup__input_type_title');
 const linkCardsInput = document.querySelector('.popup__input_type_link');
 
-let popupPhoto = document.querySelector('.popup__image');
+let popupPhoto = document.querySelector('.popup_image');
 const FullPhoto = document.querySelector('.popup__open-image');
 const nameFullPhoto = document.querySelector('.popup__header-image');
 const popup = document.querySelector('.popup');
