@@ -1,11 +1,11 @@
-const accountEdit = document.querySelector('.account__edit-button');
+const buttonOpenEditProfilePopup = document.querySelector('.account__edit-button');
 const popupEdit = document.querySelector('.popup_edit');
 const buttonCloseEdit = document.querySelector('.popup__close');
-const formEdit = document.querySelector('.popup__form');
+const formEditProfile = document.querySelector('.popup__form');
 const popupAdd = document.querySelector('.popup_add');
 const buttonCloseAdd = document.querySelector('.popup__close-button-add');
-const accountAdd = document.querySelector('.account__add-button');
-const formAdd = document.querySelector('.popup__form-add');
+const buttonOpenAddCardPopup = document.querySelector('.account__add-button');
+const formAddCard = document.querySelector('.popup__form-add');
 const userNameElement = document.querySelector('.account__name');
 const userOccupationElement = document.querySelector('.account__profession');
 const userNameInput = document.querySelector('.popup__input_type_name');
@@ -39,12 +39,11 @@ const handleEditForm = (evt) => {
   closePopup(popupEdit);
 }
 
-accountEdit.addEventListener('click', handleEditAccountClick);
+buttonOpenEditProfilePopup.addEventListener('click', handleEditAccountClick);
 buttonCloseEdit.addEventListener('click', () => {
   closePopup(popupEdit);
 });
-formEdit.addEventListener('submit', handleEditForm);
-
+formEditProfile.addEventListener('submit', handleEditForm);
 
 const posts = document.querySelector('.posts');
 
@@ -56,12 +55,11 @@ const createCard = (card) => {
   postPhoto.setAttribute('src', card.link);
   postPhoto.setAttribute('alt', card.name);
 
-  const likeElement = newCard.querySelectorAll(".post__like-button");
-  likeElement.forEach(like => {
-    like.addEventListener('click', () => {
-      like.classList.toggle('post__like-button_active')
-    })
-  });
+  const likeElement = newCard.querySelector(".post__like-button");
+  likeElement.addEventListener('click', handleOffLike);
+  function handleOffLike(evt){
+    evt.target.classList.toggle('post__like-button_active');
+  };
 
   const post = newCard.querySelector('.post');
   const buttonDelete = newCard.querySelector('.post__delete-button');
@@ -78,12 +76,12 @@ const createCard = (card) => {
   return newCard;
 }
 
-const showCard = (card) => {
+const addCard = (card) => {
   posts.prepend(createCard(card));
 };
 
 initialCards.forEach((card) => {
-  showCard(card);
+  addCard(card);
 });
 
 initialCards.forEach(createCard);
@@ -98,8 +96,8 @@ const handleAddForm = (element) => {
   closePopup(popupAdd);
 };
 
-accountAdd.addEventListener('click', () => {
-  formAdd.reset();
+buttonOpenAddCardPopup.addEventListener('click', () => {
+  formAddCard.reset();
   openPopup(popupAdd);
 });
 
@@ -110,7 +108,7 @@ buttonClosePhoto.addEventListener('click', () => {
 buttonCloseAdd.addEventListener('click', () => {
   closePopup(popupAdd);
 });
-formAdd.addEventListener('submit', handleAddForm);
+formAddCard.addEventListener('submit', handleAddForm);
 
 
 
