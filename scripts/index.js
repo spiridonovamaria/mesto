@@ -1,7 +1,7 @@
 const buttonOpenEditProfilePopup = document.querySelector('.account__edit-button');
 const popupEdit = document.querySelector('.popup_edit');
 const buttonCloseEdit = document.querySelector('.popup__close');
-const formEditProfile = document.querySelector('.popup__form');
+const formEditProfile = document.querySelector('.popup__form-edit');
 const popupAdd = document.querySelector('.popup_add');
 const buttonCloseAdd = document.querySelector('.popup__close-button-add');
 const buttonOpenAddCardPopup = document.querySelector('.account__add-button');
@@ -17,13 +17,18 @@ const fullPhoto = document.querySelector('.popup__open-image');
 const nameFullPhoto = document.querySelector('.popup__header-image');
 const buttonClosePhoto = document.querySelector('.popup__close-image');
 const newCard = document.querySelector('#cardTemplate').content;
+const popupList = document.querySelectorAll('.popup');
 
 function closePopup(close) {
   close.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEscape);
+  popupList.addEventListener('mousedown', closePopupOverlay);
 }
 
 function openPopup(open) {
   open.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEscape);
+  popupList.addEventListener('mousedown', closePopupOverlay);
 }
 
 const handleEditAccountClick = () => {
@@ -57,7 +62,7 @@ const createCard = (card) => {
 
   const likeElement = newCard.querySelector(".post__like-button");
   likeElement.addEventListener('click', handleOffLike);
-  function handleOffLike(evt){
+  function handleOffLike(evt) {
     evt.target.classList.toggle('post__like-button_active');
   };
 
@@ -110,6 +115,22 @@ buttonCloseAdd.addEventListener('click', () => {
 });
 formAddCard.addEventListener('submit', handleAddForm);
 
+function closePopupEscape(evt) {
+  if (evt.key === 'Escape') {
+    closePopup(document.querySelector('.popup_opened'));
+  }
 
+}
 
+popupList.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target === evt.currentTarget) {
+      const popupClosetOverlay = popupClosest(evt);
+      closePopup(popupClosetOverlay);
+    };
+  });
+});
+const popupClosest = (evt) => {
+  return evt.target.closest('.popup');
+};
 

@@ -36,13 +36,23 @@
   <div class="popup popup_edit">
     <div class="popup__container">
       <button class="popup__close popup__close-button-edit" type="button"></button>
-      <form class="popup__form popup__form-edit" name="formEdit">
-        <h2 class="popup__header">Редактировать профиль</h2>
-        <fieldset class="popup__fieldset popup__fieldset-edit">
-          <input class="popup__input popup__input_type_name" type="text" placeholder="Ваше имя" name="name">
-          <input class="popup__input popup__input_type_job" type="text" placeholder="Род деятельности" name="job">
-        </fieldset>
-        <button class="popup__save" type="submit">Сохранить</button>
+      <form class="popup__form popup__form-edit" name="formEdit" novalidate>
+          <h2 class="popup__header">Редактировать профиль</h2>
+          <fieldset class="popup__fieldset popup__fieldset-edit">
+            <div class="popup__form-section">
+            <input class="popup__input popup__input_type_name " type="text" placeholder="Ваше имя" name="name" required
+              minlength="2" maxlength="40" id="name-input">
+            <span class="popup__input-error"></span>
+            </div>
+
+            <div class="popup__form-section">
+            <input class="popup__input popup__input_type_job" type="text" placeholder="Род деятельности" name="job"
+              required required minlength="2" maxlength="200" id="job-input">
+            <span class="popup__input-error"></span>
+            </div>
+
+          </fieldset>
+          <button class="popup__save" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
@@ -52,13 +62,23 @@
   <div class="popup popup_add">
     <div class="popup__container">
       <button class="popup__close popup__close-button-add" type="button"></button>
-      <form class="popup__form popup__form-add" name="formEdit">
-        <h2 class="popup__header">Новое место </h2>
-        <fieldset class="popup__fieldset popup__fieldset-add">
-          <input class="popup__input popup__input_type_title" type="text" placeholder="Название" name="title">
-          <input class="popup__input popup__input_type_link" type="text" placeholder="Ссылка на картинку" name="link">
-        </fieldset>
-        <button class="popup__save" type="submit">Сохранить</button>
+      <form class="popup__form popup__form-add" name="formEdit" novalidate>
+          <h2 class="popup__header">Новое место </h2>
+          <fieldset class="popup__fieldset popup__fieldset-add">
+            <div class="popup__form-section">
+              <input class="popup__input popup__input_type_title" type="text" placeholder="Название" name="title" required
+              required minlength="2" maxlength="30" id="title-input">
+            <span class="popup__input-error "></span>
+            </div>
+            <div class="popup__form-section">
+            <input class="popup__input popup__input_type_link" type="url" placeholder="Ссылка на картинку" name="link"
+              required id="link-input">
+            <span class="popup__input-error"></span>
+            </div>
+          </fieldset>
+          <button class="popup__save" type="submit">Сохранить</button>
+
+
       </form>
     </div>
   </div>
@@ -81,6 +101,7 @@
       </div>
     </li>
   </template>
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/constants.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
