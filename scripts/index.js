@@ -19,16 +19,16 @@ const buttonClosePhoto = document.querySelector('.popup__close-image');
 const newCard = document.querySelector('#cardTemplate').content;
 const popupList = document.querySelectorAll('.popup');
 
-function closePopup(close) {
-  close.classList.remove('popup_opened');
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEscape);
-  popupList.addEventListener('mousedown', closePopupOverlay);
+
 }
 
-function openPopup(open) {
-  open.classList.add('popup_opened');
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEscape);
-  popupList.addEventListener('mousedown', closePopupOverlay);
+
 }
 
 const handleEditAccountClick = () => {
@@ -101,10 +101,18 @@ const handleAddForm = (element) => {
   closePopup(popupAdd);
 };
 
+function disableSubmitButton() {
+  const submitButton = formAddCard.querySelector('.popup__save');
+  submitButton.classList.add('popup__save_invalid');
+  submitButton.disabled = true;
+}
+
 buttonOpenAddCardPopup.addEventListener('click', () => {
   formAddCard.reset();
+  disableSubmitButton();
   openPopup(popupAdd);
 });
+
 
 buttonClosePhoto.addEventListener('click', () => {
   closePopup(popupPhoto);
@@ -125,12 +133,11 @@ function closePopupEscape(evt) {
 popupList.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
     if (evt.target === evt.currentTarget) {
-      const popupClosetOverlay = popupClosest(evt);
-      closePopup(popupClosetOverlay);
+      closePopup(evt.target);
     };
   });
 });
-const popupClosest = (evt) => {
-  return evt.target.closest('.popup');
-};
 
+popupEdit.addEventListener('mousedown', closePopupOverlay);
+popupAdd.addEventListener('mousedown', closePopupOverlay);
+popupPhoto.addEventListener('mousedown', closePopupOverlay);

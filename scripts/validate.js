@@ -1,11 +1,14 @@
-const hiddenError = (errorElement, inputErrorClass) => {
-  errorElement.innerText = '';
+const hiddenError = (errorElement, inputErrorClass, inputElement) => {
+  errorElement.textContent = '';
   errorElement.classList.remove(inputErrorClass);
+  inputElement.classList.remove('popup__input_invalid');
+
 };
 
-const showError = (errorElement, message, inputErrorClass) => {
-  errorElement.innerText = message;
+const showError = (errorElement, message, inputErrorClass, inputElement) => {
+  errorElement.textContent = message;
   errorElement.classList.add(inputErrorClass);
+  inputElement.classList.add('popup__input_invalid');
 };
 
 const toggleInputState = (inputElement, options) => {
@@ -13,21 +16,23 @@ const toggleInputState = (inputElement, options) => {
   const inputSectionElement = inputElement.closest(options.inputSectionSelector);
   const errorElement = inputSectionElement.querySelector(options.inputErrorSelector);
   if (isValid) {
-    hiddenError(errorElement, options.inputErrorClass);
+    hiddenError(errorElement, options.inputErrorClass, inputElement);
   }
   else {
-    showError(errorElement, inputElement.validationMessage, options.inputErrorClass);
+    showError(errorElement, inputElement.validationMessage, options.inputErrorClass, inputElement);
   }
 };
 
 const enableButton = (buttonElement, disabledButtonClass) => {
-  buttonElement.disabled = '';
   buttonElement.classList.remove(disabledButtonClass);
+  buttonElement.disabled = '';
+
 };
 
 const disableButton = (buttonElement, disabledButtonClass) => {
-  buttonElement.disabled = 'true';
   buttonElement.classList.add(disabledButtonClass);
+  buttonElement.disabled = 'true';
+
 };
 
 const toggleButtonState = (inputs, submitElement, disabledButtonClass) => {
@@ -51,10 +56,13 @@ const setEventListeners = (form, options) => {
 
       toggleInputState(inputElement, options);
 
-      toggleButtonState(inputs, submitElement, options.disabledButtonClass);
+      toggleButtonState(inputs, submitElement, options.disabledButtonClass, inputElement);
     });
   });
 };
+
+
+
 
 
 const enableValidation = (options) => {
@@ -72,6 +80,7 @@ const options = {
   inputErrorSelector: '.popup__input-error',
   disabledButtonClass: 'popup__save_invalid',
   inputErrorClass: 'popup__input-error_active',
+
 
 };
 
