@@ -1,14 +1,14 @@
-const hiddenError = (errorElement, inputErrorClass, inputElement) => {
+const hiddenError = (errorElement, inputErrorClass, inputElement, inputBorderError) => {
   errorElement.textContent = '';
   errorElement.classList.remove(inputErrorClass);
-  inputElement.classList.remove('popup__input_invalid');
+  inputElement.classList.remove(inputBorderError);
 
 };
 
-const showError = (errorElement, message, inputErrorClass, inputElement) => {
+const showError = (errorElement, message, inputErrorClass, inputElement, inputBorderError) => {
   errorElement.textContent = message;
   errorElement.classList.add(inputErrorClass);
-  inputElement.classList.add('popup__input_invalid');
+  inputElement.classList.add(inputBorderError);
 };
 
 const toggleInputState = (inputElement, options) => {
@@ -16,10 +16,10 @@ const toggleInputState = (inputElement, options) => {
   const inputSectionElement = inputElement.closest(options.inputSectionSelector);
   const errorElement = inputSectionElement.querySelector(options.inputErrorSelector);
   if (isValid) {
-    hiddenError(errorElement, options.inputErrorClass, inputElement);
+    hiddenError(errorElement, options.inputErrorClass, inputElement, options.inputBorderError);
   }
   else {
-    showError(errorElement, inputElement.validationMessage, options.inputErrorClass, inputElement);
+    showError(errorElement, inputElement.validationMessage, options.inputErrorClass, inputElement, options.inputBorderError);
   }
 };
 
@@ -80,7 +80,7 @@ const options = {
   inputErrorSelector: '.popup__input-error',
   disabledButtonClass: 'popup__save_invalid',
   inputErrorClass: 'popup__input-error_active',
-
+  inputBorderError: 'popup__input_invalid',
 
 };
 

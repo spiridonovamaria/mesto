@@ -1,16 +1,8 @@
 .popup__save_invalid {
-  /*border: 1px solid #000;
-  background-color: #fff;
-  color: #000;
-  opacity: 0.2;
   cursor: default;
-  pointer-events: none;*/
-
-  color: #B8B8B8;
-  background: #EDEDED;
+  opacity: 0.2;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
   pointer-events: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }

@@ -138,6 +138,3 @@ popupList.forEach((popup) => {
   });
 });
 
-popupEdit.addEventListener('mousedown', closePopupOverlay);
-popupAdd.addEventListener('mousedown', closePopupOverlay);
-popupPhoto.addEventListener('mousedown', closePopupOverlay);
