@@ -1,3 +1,5 @@
+import { options } from "./constants.js";
+
 export class FormValidator {
   constructor(options, formElement) {
     this._formElement = formElement;
@@ -69,8 +71,7 @@ export class FormValidator {
       });
     });
   }
-
-
+  
   enableValidation() {
     this._setEventListeners();
   }
@@ -79,14 +80,5 @@ export class FormValidator {
 
 
 
-export const options = {
-  formSelector: '.popup__form',
-  submitSelector: '.popup__save',
-  inputSelector: '.popup__input',
-  inputSectionSelector: '.popup__form-section',
-  inputErrorSelector: '.popup__input-error',
-  disabledButtonClass: 'popup__save_invalid',
-  inputErrorClass: 'popup__input-error_active',
-  inputBorderError: 'popup__input_invalid',
-};
+
 

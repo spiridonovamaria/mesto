@@ -1,6 +1,6 @@
 import { Card } from "./Card.js";
-import { initialCards } from "./constants.js";
-import { FormValidator, options} from "./FormValidator.js";
+import { initialCards, options } from "./constants.js";
+import { FormValidator} from "./FormValidator.js";
 
 
 const buttonOpenEditProfilePopup = document.querySelector('.account__edit-button');
@@ -80,15 +80,9 @@ const handleAddForm = (evt) => {
   closePopup(popupAdd);
 }
 
-function disableSubmitButton() {
-  const submitButton = formAddCard.querySelector('.popup__save');
-  submitButton.classList.add('popup__save_invalid');
-  submitButton.disabled = true;
-}
 
 buttonOpenAddCardPopup.addEventListener('click', () => {
   formAddCard.reset();
-  disableSubmitButton();
   openPopup(popupAdd);
 });
 
