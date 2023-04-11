@@ -71,7 +71,12 @@ export class FormValidator {
       });
     });
   }
-  
+
+ inactiveButton() {
+    this._inputs.forEach(item => this._hideError(item));
+    this._disableButton();
+}
+
   enableValidation() {
     this._setEventListeners();
   }

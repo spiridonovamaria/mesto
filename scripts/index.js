@@ -25,6 +25,7 @@ const popupList = document.querySelectorAll('.popup');
 
 
 
+
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEscape);
@@ -82,8 +83,10 @@ const handleAddForm = (evt) => {
 
 
 buttonOpenAddCardPopup.addEventListener('click', () => {
+  formAddCardValidator.inactiveButton();
   formAddCard.reset();
   openPopup(popupAdd);
+
 });
 
 
