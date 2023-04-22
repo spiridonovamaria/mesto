@@ -20,7 +20,8 @@ export default class Card {
     this._element = this._getTemplate();
     this._cardPicture = this._element.querySelector('.post__photo');
     this._cardPicture.src = this._link;
-    this._element.querySelector('.post__name').textContent = this._name;
+    this._cardTitle = this._element.querySelector('.post__name');
+    this._cardTitle.textContent = this._name;
     this._cardPicture.alt = this._name;
     this._likeButton = this._element.querySelector('.post__like-button');
     this._deleteButton = this._element.querySelector('.post__delete-button');

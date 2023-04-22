@@ -123,7 +123,7 @@ const formAddCardValidator = new FormValidator(options, formAddCard);
 formAddCardValidator.enableValidation();
 
 
-const userInfo = new UserInfo({ userNameElement: '.account__name', userOccupationElement: '.account__profession' });
+const userInfo = new UserInfo({ userNameElement: '.account__name', userOccupationElement: '.account__profession', titleElement: '.post__name' });
 
 const popupImage = new PopupWithImage('.popup_image');
 popupImage.setEventListeners();
@@ -172,6 +172,7 @@ const popupAdd = new PopupWithForm({
   formSubmit: (data) => {
     cardElements.addItem(createCard(data));
   }
+
 });
 
 popupAdd.setEventListeners();
