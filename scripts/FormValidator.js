@@ -1,6 +1,6 @@
 import { options } from "./constants.js";
 
-export class FormValidator {
+export default class FormValidator {
   constructor(options, formElement) {
     this._formElement = formElement;
     this._submitSelector = options.submitSelector;

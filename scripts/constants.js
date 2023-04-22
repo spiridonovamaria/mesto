@@ -36,3 +36,4 @@ export const options = {
   inputErrorClass: 'popup__input-error_active',
   inputBorderError: 'popup__input_invalid',
 };
+
