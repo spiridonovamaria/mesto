@@ -2,10 +2,16 @@
   "name": "yandex_praktikum",
   "version": "0.0.1",
   "description": "Адаптивный одностраничный сайт, куда можно будет добавлять фотографии, удалять их и ставить лайки.",
-  "main": "index.js",
+  "main": "./src/scripts/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack",
+    "build": "webpack"
   },
   "author": "Maria Spiridonova",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.80.0",
+    "webpack-cli": "^5.0.2",
+    "webpack-dev-server": "^4.13.3"
+  }
 }

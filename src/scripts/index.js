@@ -123,7 +123,7 @@ const formAddCardValidator = new FormValidator(options, formAddCard);
 formAddCardValidator.enableValidation();
 
 
-const userInfo = new UserInfo({ userNameElement: '.account__name', userOccupationElement: '.account__profession', titleElement: '.post__name' });
+const userInfo = new UserInfo({ userNameElement: '.account__name', userOccupationElement: '.account__profession' });
 
 const popupImage = new PopupWithImage('.popup_image');
 popupImage.setEventListeners();
@@ -133,8 +133,9 @@ const cardElements = new Section({
     cardElements.addItem(createCard(item));
   }
 },
-  ".posts");
-cardElements.renderItems();
+  ".posts")
+cardElements.renderItems();;
+
 
 function createCard(data) {
   const card = new Card(data, '#cardTemplate', handleCardClick);
@@ -175,10 +176,12 @@ const popupAdd = new PopupWithForm({
 
 });
 
-popupAdd.setEventListeners();
+
 
 buttonOpenAddCardPopup.addEventListener("click", () => {
   formAddCardValidator.inactiveButton();
   formAddCard.reset();
   popupAdd.openPopup();
 });
+
+popupAdd.setEventListeners();
