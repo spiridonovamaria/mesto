@@ -1,10 +1,12 @@
-import Card from "./Card.js";
-import { initialCards, options } from "./constants.js";
-import FormValidator from "./FormValidator.js";
-import PopupWithForm from "./PopupWithForm.js";
-import PopupWithImage from "./PopupWithImage.js";
-import Section from "./Section.js";
-import UserInfo from "./UserInfo.js";
+import "./index.css";
+import Card from "../scripts/Card.js";
+import { initialCards, options } from "../scripts/constants.js";
+import FormValidator from "../scripts/FormValidator.js";
+import PopupWithForm from "../scripts/PopupWithForm.js";
+import PopupWithImage from "../scripts/PopupWithImage.js";
+import Section from "../scripts/Section.js";
+import UserInfo from "../scripts/UserInfo.js";
+
 
 const buttonOpenEditProfilePopup = document.querySelector('.account__edit-button');
 /*const popupEdit = document.querySelector('.popup_edit');*/

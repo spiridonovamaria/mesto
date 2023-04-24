@@ -4,17 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
 
 <body class="root">
   <header class="header">
-    <img class="header__logo" src="./images/Vector.svg" alt="Логотип">
+    <img class="header__logo" src="<%=require('./images/Vector.svg')%>" alt="Логотип">
   </header>
   <main class="content">
     <section class="account">
-      <img class="account__photo" src="./images/image.jpg" alt="Аватар">
+      <img class="account__photo" src="<%=require('./images/image.jpg')%>" alt="Аватар">
       <div class="account__bio">
         <div class="account__title">
           <h1 class="account__name">Жак-Ив Кусто</h1>
@@ -101,7 +100,7 @@
       </div>
     </li>
   </template>
-  <script type="module" src="./scripts/index.js"></script>
+  <script type="module" src="./pages/index.js"></script>
 </body>
 
 </html>
