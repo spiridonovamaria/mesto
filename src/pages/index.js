@@ -70,11 +70,11 @@ const popupEdit = new PopupWithForm({
 
 buttonOpenEditProfilePopup.addEventListener("click", () => {
   popupEdit.openPopup();
-  const { name, occupation } = userInfo.getUserInfo();
+  const { name, job } = userInfo.getUserInfo();
   userNameInput.value = name;
-  userOccupationInput.value = occupation;
+  userOccupationInput.value = job;
   formEditProfileValidator.inactiveButton();
-  formEditProfile.reset();
+
 });
 
 popupEdit.setEventListeners();
