@@ -1,10 +1,21 @@
 export default class Card {
-  constructor({ name, link }, cardTemplateSelector, handleCardClick) {
-    this._name = name;
-    this._link = link;
+  constructor(
+    { data, handleCardClick, handleDeleteCard, handleLikeScore, idUser }, cardTemplateSelector) {
+    this._data = data;
+    this._name = data.name;
+    this._link = data.link;
     this._cardTemplateSelector = cardTemplateSelector;
-   this._handleCardClick = handleCardClick;
+    this._like = data.likes.length;
+    this._id = data._id;
+    this._owner = data.owner._id;
+    this._idUser = idUser;
+
+    this._handleCardClick = handleCardClick;
+    this._handleDeleteCard = handleDeleteCard;
+    this._handleLikeScore = handleLikeScore;
   }
+
+
 
   _getTemplate() {
     const cardElement = document
@@ -25,36 +36,45 @@ export default class Card {
     this._cardPicture.alt = this._name;
     this._likeButton = this._element.querySelector('.post__like-button');
     this._deleteButton = this._element.querySelector('.post__delete-button');
-
+    this._likeScore = this._element.querySelector('.post__like-score');
+    this._likeScore.textContent = this._like;
+    if (this._owner !== this._idUser) {
+      this._deleteButton.remove();
+    }
     this._setEventListeners();
-
     return this._element;
   }
 
-  _handleCardLike() {
-    this._likeButton.classList.toggle('post__like-button_active');
-  }
 
-  _handleDelete() {
+  removeCard() {
     this._element.remove();
     this._element = null;
   }
-  _openPopupImage() {
-    this._handleCardClick(this._link, this._name);
+
+
+  getId() {
+    return this._id;
   }
+
+  like(sum) {
+    this._likeButton.classList.toggle('post__like-button_active');
+    this._likeScore.textContent = sum;
+  }
+
+
   _setEventListeners() {
     this._likeButton.addEventListener('click', () => {
-      this._handleCardLike();
-    });
+      this._handleLikeScore();
+    })
+      ;
 
     this._deleteButton.addEventListener('click', () => {
-      this._handleDelete();
+      this._handleDeleteCard();
     })
 
     this._cardPicture.addEventListener('click', () => {
-      this._openPopupImage();
+      this._handleCardClick(this._link, this._name);
     })
   }
 };
-
 

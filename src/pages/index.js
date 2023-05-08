@@ -1,11 +1,13 @@
 import "./index.css";
 import Card from "../components/Card.js";
-import { initialCards, options } from "../components/constants.js";
+import { /*initialCards,*/ options } from "../components/constants.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
+import PopupWithConfirm from "../components/PopupWithConfirm.js";
+import Api from "../components/Api.js";
 
 
 const buttonOpenEditProfilePopup = document.querySelector('.account__edit-button');
@@ -22,11 +24,29 @@ export const fullPhoto = document.querySelector('.popup__open-image');
 export const nameFullPhoto = document.querySelector('.popup__header-image');
 const buttonClosePhoto = document.querySelector('.popup__close-image');
 const popupList = document.querySelectorAll('.popup');
+const formUpdateAvatar = document.querySelector('.popup__form-avatar');
+const formConfirm = document.querySelector('.popup_confirm');
+const cards = {};
+const buttonChangeAvatar = document.querySelector('.account__avatar-button');
+
+
+const api = new Api({
+  url: "https://mesto.nomoreparties.co/v1/cohort-65/",
+  headers: {
+    authorization: "f60634d5-63da-4429-b79c-be8f0298c760",
+    "Content-Type": "application/json"
+  }
+})
 
 
 
+Promise.all([api.getInfoUser(), api.getInitialCards()])
+  .then(([data, newCards]) => {
+    userInfo.setUserInfo(data);
+    cardElements.renderItems(newCards);
+  })
 
-
+  .catch((err) => console.log(err));
 
 const formEditProfileValidator = new FormValidator(options, formEditProfile);
 formEditProfileValidator.enableValidation();
@@ -34,45 +54,92 @@ formEditProfileValidator.enableValidation();
 const formAddCardValidator = new FormValidator(options, formAddCard);
 formAddCardValidator.enableValidation();
 
+const formUpdateAvatarValidator = new FormValidator(options, formUpdateAvatar);
+formUpdateAvatarValidator.enableValidation();
 
-const userInfo = new UserInfo({ userNameElement: '.account__name', userOccupationElement: '.account__profession' });
+
+
+const userInfo = new UserInfo({ userNameElement: '.account__name', userOccupationElement: '.account__profession', userAvatarElement: '.account__photo' });
 
 const popupImage = new PopupWithImage('.popup_image');
 popupImage.setEventListeners();
 
 const cardElements = new Section({
-  items: initialCards, renderer: (item) => {
+  renderer: (item) => {
     cardElements.addItem(createCard(item));
   }
+
 },
   ".posts")
-cardElements.renderItems();;
+
 
 
 function createCard(data) {
-  const card = new Card(data, '#cardTemplate', handleCardClick);
+  const card = new Card({
+    data: data,
+    handleCardClick: (link, name) => {
+      popupImage.openPopup(link, name)
+    },
+    handleDeleteCard: () => {
+      popupConfirm.openPopup()
+
+      popupConfirm.handleConfirm(() => {
+          api.deleteCard(card.getId())
+              .then(() => {
+                  card.removeCard()
+                  popupConfirm.closePopup()
+              })
+              .catch((err) => console.log(err))
+      })
+  },
+    handleLikeScore: (like) => {
+      if (like) {
+        api
+          .deleteLike(card.getId())
+          .then((res) => {
+            card.like(res.likes.length);
+          })
+          .catch((err) => console.log(err));
+      } else {
+        api
+          .addLike(card.getId())
+          .then((res) => {
+            card.like(res.likes.length);
+          })
+          .catch((err) => console.log(err));
+      }
+    },
+    idUser: userInfo.getUserId()
+  }, '#cardTemplate')
   const cardElement = card.generateCard();
 
   return cardElement;
 }
 
-function handleCardClick(link, name) {
-  popupImage.openPopup(link, name);
-}
+
 
 const popupEdit = new PopupWithForm({
   popupSelector: '.popup_edit',
   formSubmit: (data) => {
-    userInfo.setUserInfo(data);
-    popupEdit.closePopup();
-  }
+    popupEdit.renderSave(true);
+    api.editInfoUser(data)
+        .then((res) => {
+            userInfo.setUserInfo(res);
+            popupEdit.closePopup();
+        })
+        .catch((err) => console.log(err))
+        .finally(() => {
+          popupEdit.renderSave(false);
+
+        });
+    }
 });
 
 buttonOpenEditProfilePopup.addEventListener("click", () => {
   popupEdit.openPopup();
-  const { name, job } = userInfo.getUserInfo();
+  const { name, about } = userInfo.getUserInfo();
   userNameInput.value = name;
-  userOccupationInput.value = job;
+  userOccupationInput.value = about;
   formEditProfileValidator.inactiveButton();
 
 });
@@ -83,8 +150,18 @@ popupEdit.setEventListeners();
 const popupAdd = new PopupWithForm({
   popupSelector: '.popup_add',
   formSubmit: (data) => {
-    cardElements.addItem(createCard(data));
-  }
+    popupAdd.renderSave(true);
+    api.addCard(data)
+        .then((res) => {
+          cardElements.addItem(createCard(res));
+          popupAdd.closePopup();
+        })
+        .catch((err) => console.log(err))
+        .finally(() => {
+          popupAdd.renderSave(false);
+
+        });
+    }
 
 });
 
@@ -97,3 +174,34 @@ buttonOpenAddCardPopup.addEventListener("click", () => {
 });
 
 popupAdd.setEventListeners();
+
+
+const popupAvatar = new PopupWithForm({
+  popupSelector: '.popup_update-avatar',
+  formSubmit: (data) => {
+    popupAvatar.renderSave(true)
+    api.editAvatarUser(data)
+      .then((res) => {
+        userInfo.setUserInfo(res);
+
+
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        popupAvatar.renderSave(false);
+        popupAvatar.closePopup();
+      });
+  }
+})
+
+buttonChangeAvatar.addEventListener("click", () => {
+  formUpdateAvatarValidator.inactiveButton();
+  popupAvatar.openPopup();
+});
+
+
+popupAvatar.setEventListeners();
+
+const popupConfirm = new PopupWithConfirm('.popup_confirm');
+popupConfirm.setEventListeners();
+

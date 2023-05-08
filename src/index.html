@@ -13,7 +13,11 @@
   </header>
   <main class="content">
     <section class="account">
-      <img class="account__photo" src="<%=require('./images/image.jpg')%>" alt="Аватар">
+      <div class="account__avatar">
+        <img class="account__photo" src="<%=require('./images/image.jpg')%>" alt="Аватар" >
+        <button class="account__avatar-button" type="button"></button>
+      </div>
+
       <div class="account__bio">
         <div class="account__title">
           <h1 class="account__name">Жак-Ив Кусто</h1>
@@ -45,7 +49,7 @@
             </div>
 
             <div class="popup__form-section">
-            <input class="popup__input popup__input_type_job" type="text" placeholder="Род деятельности" name="job"
+            <input class="popup__input popup__input_type_job" type="text" placeholder="Род деятельности" name="about"
               required minlength="2" maxlength="200" id="jobInput">
             <span class="popup__input-error jobInput-error" id="jobInput-error"></span>
             </div>
@@ -90,12 +94,43 @@
     </div>
   </div>
 
+  <div class="popup popup_update-avatar">
+    <div class="popup__container">
+      <button class="popup__close popup__close-button-avatar" type="button"></button>
+      <form class="popup__form popup__form-avatar" name="formAvatar" novalidate>
+        <h2 class="popup__header">Обновить аватар</h2>
+        <div class="popup__form-section">
+          <input class="popup__input popup__input_type_avatar" type="url" placeholder="Ссылка на картинку" name="avatar"
+            required id="linkInput">
+          <span class="popup__input-error linkInput-error"  id="linkInput-error"></span>
+          </div>
+          <button class="popup__save" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+<div class="popup popup_confirm">
+  <div class="popup__container">
+    <button class="popup__close popup__close-button-confirm" type="button"></button>
+    <form class="popup__form popup__form-confirm" name="formConfirm" novalidate>
+      <h2 class="popup__header">Вы уверены?</h2>
+      <div class="popup__form-section">
+        <button class="popup__save" type="submit">Да</button>
+      </div>
+    </form>
+  </div>
+</div>
+
   <template id="cardTemplate">
     <li class="post">
       <img class="post__photo">
       <div class="post__info">
         <h3 class="post__name"></h3>
-        <button class="post__like-button" type="button"></button>
+        <div class="post__container-like">
+          <button class="post__like-button" type="button"></button>
+          <span class="post__like-score">0</span>
+        </div>
+
         <button class="post__delete-button" type="button"></button>
       </div>
     </li>
