@@ -26,7 +26,6 @@ const buttonClosePhoto = document.querySelector('.popup__close-image');
 const popupList = document.querySelectorAll('.popup');
 const formUpdateAvatar = document.querySelector('.popup__form-avatar');
 const formConfirm = document.querySelector('.popup_confirm');
-const cards = {};
 const buttonChangeAvatar = document.querySelector('.account__avatar-button');
 
 
@@ -37,6 +36,10 @@ const api = new Api({
     "Content-Type": "application/json"
   }
 })
+
+
+
+
 
 
 
@@ -92,19 +95,22 @@ function createCard(data) {
               .catch((err) => console.log(err))
       })
   },
-    handleLikeScore: (like) => {
-      if (like) {
+    handleLikeScore: () => {
+
+        if (card.isLiked){
         api
           .deleteLike(card.getId())
-          .then((res) => {
-            card.like(res.likes.length);
+          .then(likes => {
+            card.likeOff();
+            card.newNumberLike(likes);
           })
           .catch((err) => console.log(err));
       } else {
         api
           .addLike(card.getId())
-          .then((res) => {
-            card.like(res.likes.length);
+          .then(likes => {
+            card.likeOn();
+            card.newNumberLike(likes);
           })
           .catch((err) => console.log(err));
       }
@@ -195,7 +201,6 @@ const popupAvatar = new PopupWithForm({
 })
 
 buttonChangeAvatar.addEventListener("click", () => {
-  formUpdateAvatarValidator.inactiveButton();
   popupAvatar.openPopup();
 });
 
