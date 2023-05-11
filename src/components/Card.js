@@ -5,7 +5,7 @@ export default class Card {
     this._name = data.name;
     this._link = data.link;
     this._cardTemplateSelector = cardTemplateSelector;
-    this._like = data.likes;
+    this._likes = data.likes;
     this._id = data._id;
     this._owner = data.owner._id;
     this._idUser = idUser;
@@ -38,12 +38,13 @@ export default class Card {
     this._deleteButton = this._element.querySelector('.post__delete-button');
     this._likeScore = this._element.querySelector('.post__like-score');
 
-    this._likeScore.textContent = this._like.length;
+
+    this._changeLikeState();
+
     if (this._owner !== this._idUser) {
       this._deleteButton.remove();
     }
 
-    this.like();
     this._setEventListeners();
     return this._element;
   }
@@ -60,15 +61,13 @@ export default class Card {
   }
 
   _checkLike() {
-    return this._like.some(like => like._id === this._idUser);
+    return this._likes.some(like => like._id === this._idUser);
   }
-
-  like() {
-
+  _changeLikeState = () => {
+    this._likeScore.textContent = this._likes.length;
     if (this._checkLike()) {
       this.likeOn();
     } else {
-
       this.likeOff();
     }
   }
@@ -82,9 +81,10 @@ export default class Card {
     this.isLiked = false;
   }
 
-  newNumberLike(data) {
+  setLikesCount(data) {
     this._likeScore.textContent = data.likes.length;
   }
+
 
   _setEventListeners() {
     this._likeButton.addEventListener('click', () => {
