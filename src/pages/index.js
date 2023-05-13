@@ -101,7 +101,6 @@ function createCard(data) {
         api
           .deleteLike(card.getId())
           .then(likes => {
-            card.likeOff();
             card.setLikesCount(likes);
           })
           .catch((err) => console.log(err));
@@ -109,7 +108,6 @@ function createCard(data) {
         api
           .addLike(card.getId())
           .then(likes => {
-            card.likeOn();
             card.setLikesCount(likes);
           })
           .catch((err) => console.log(err));

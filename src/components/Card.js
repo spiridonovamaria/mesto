@@ -82,7 +82,8 @@ export default class Card {
   }
 
   setLikesCount(data) {
-    this._likeScore.textContent = data.likes.length;
+    this._likes = data.likes;
+    this._changeLikeState();
   }
 
 
